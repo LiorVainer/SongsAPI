@@ -1,0 +1,34 @@
+{
+  "singers": [
+    {
+      "name": "Charlie Puth",
+      "birthdate": "1991-12-02T00:00:00.000Z",
+      "country": "United States",
+      "imageUrl": "https://songsapistorage.blob.core.windows.net/singers-images/Charlie%20Puth.jpg"
+    },
+    {
+      "name": "Adele",
+      "birthdate": "1988-05-05T00:00:00.000Z",
+      "country": "United Kingdom",
+      "imageUrl": "https://songsapistorage.blob.core.windows.net/singers-images/Adele.jfif"
+    },
+    {
+      "name": "Sam Smith",
+      "birthdate": "1992-05-19T00:00:00.000Z",
+      "country": "United Kingdom",
+      "imageUrl": "https://songsapistorage.blob.core.windows.net/singers-images/Sam Smith.jfif"
+    },
+    {
+      "name": "James Arthur",
+      "birthdate": "1988-03-02T00:00:00.000Z",
+      "country": "United Kingdom",
+      "imageUrl": "https://songsapistorage.blob.core.windows.net/singers-images/Sam Smith.jfif"
+    },
+    {
+      "name": "Billie Eilish",
+      "birthdate": "2001-12-18T00:00:00.000Z",
+      "country": "United Stats",
+      "imageUrl": "https://songsapistorage.blob.core.windows.net/singers-images/Sam Smith.jfif"
+    }
+  ]
+}
