@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Lior Vainer",
+    "email": "liorvainer@gmail.com",
+    "password": "Liorv2001",
+    "type": "admin"
+  },
+  {
+    "name": "Nitzan Hen",
+    "email": "nitzanhen@gmail.com",
+    "password": "agrippasgrapes",
+    "type": "default"
+  },
+  {
+    "name": "Itay Lisaey",
+    "email": "itaylisaey@gmail.com",
+    "password": "keychronk3",
+    "type": "default"
+  },
+  {
+    "name": "Alex Izrailov",
+    "email": "alexizrailov@gmail.com",
+    "password": "autodogo",
+    "type": "default"
+  }
+]
