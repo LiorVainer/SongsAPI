@@ -13,7 +13,7 @@ const initDB = async () => {
   database = await client.db(dbName);
 };
 
-const getTable = (tableName: string) => {
+const getCollection = (tableName: string) => {
   return database.collection(tableName);
 };
 
@@ -21,5 +21,5 @@ const getDatabase = () => database;
 
 const getMongoClient = () => client;
 
-export { initDB, getTable, getDatabase, getMongoClient };
-export default { initDB, getTable, getDatabase, getMongoClient };
+export { initDB, getCollection, getDatabase, getMongoClient };
+export default { initDB, getCollection, getDatabase, getMongoClient };

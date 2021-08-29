@@ -4,14 +4,14 @@ import songs from '../controllers/songs';
 import singers from '../controllers/singers';
 import users from '../controllers/users';
 
-const path = {
+export const Path = {
   INDEX: '/',
   SONGS: '/songs',
   SINGERS: '/singers',
   USERS: '/users',
 };
 
-app.use(path.INDEX, index);
-app.use(path.SONGS, songs);
-app.use(path.SINGERS, singers);
-app.use(path.USERS, users);
+app.use(Path.INDEX, index);
+app.use(Path.SONGS, songs);
+app.use(Path.SINGERS, singers);
+app.use(Path.USERS, users);

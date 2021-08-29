@@ -1,6 +1,6 @@
 import { RequestHandler } from 'express';
 
-/**Runs an handler and deals with error logic in case handler fails*/
+/** Runs an handler and deals with error logic in case handler fails */
 export const handlerGuard = (handler: RequestHandler): RequestHandler => {
   return (req, res, next) => {
     try {

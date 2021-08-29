@@ -1,12 +1,12 @@
 import { Router } from 'express';
 import { ObjectId } from 'mongodb';
-import { getTable } from '../dal';
+import { getCollection } from '../dal';
 import { handlerGuard } from '../middlewares/handlerGuard';
-import { validateObjectId } from '../middlewares/pathParamsValidators';
+import { validateObjectId } from '../middlewares/validation/general';
 
 const router = Router();
 
-const songs = getTable('songs');
+const songs = getCollection('songs');
 
 router.get(
   '/',
