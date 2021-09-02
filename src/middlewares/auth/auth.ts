@@ -1,32 +1,21 @@
-import { RequestHandler } from 'express';
-import jwt from 'jsonwebtoken';
-import { getCollection } from '../../dal';
+import { RequestHandler } from "express";
+import { JwtPayload } from "jsonwebtoken";
+import { jwtUserVerify } from "../../utils/jwt";
+import jwt from "jsonwebtoken";
+import User from "../../types/User";
 
-const users = getCollection('users');
+export const validateAuthToken: RequestHandler = (req, res, next) => {
+  const { AUTH_TOKEN } = req.headers;
+  if (AUTH_TOKEN) {
+    const token = AUTH_TOKEN.toString().split(" ")[1];
 
-// Check The User with given email does not exist
-export const checkUserDoesNotExist: RequestHandler = async (req, res, next) => {
-  const { email } = req.body;
-
-  const userFound = await users.findOne({ email: email });
-
-  if (userFound) {
-    res.status(400).send('User with this email already exists, Try Register With Different Email');
+    try {
+      req.user = jwtUserVerify(token);
+      next();
+    } catch (err) {
+      return res.status(403).send("JWT is not authenticated");
+    }
   } else {
     next();
-  }
-};
-
-// Check The User with given email exists
-export const checkUserExist: RequestHandler = async (req, res, next) => {
-  const { email } = req.body;
-
-  const userFound = await users.findOne({ email: email });
-
-  if (userFound) {
-    req.user = userFound;
-    next();
-  } else {
-    res.status(400).send('User Does Not Exist, Try to Login With Different Email');
   }
 };

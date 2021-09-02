@@ -1,14 +1,15 @@
-import { Document } from 'mongodb';
+import { User } from "./User";
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
-declare module 'express-serve-static-core' {
+declare module "express-serve-static-core" {
   export interface Request<
     P = ParamsDictionary,
     ResBody = any,
     ReqBody = any,
     ReqQuery = ParsedQs
   > {
-    user?: Document;
+    user?: User;
+    jwtPayload?: JwtPayload;
   }
 }
 

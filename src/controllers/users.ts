@@ -1,24 +1,25 @@
-import { Router } from 'express';
-import { ObjectId } from 'mongodb';
-import { getCollection } from '../dal';
+import { Router } from "express";
+import { ObjectId } from "mongodb";
+import { getCollection } from "../dal";
 import {
   loginCredentialsValitation,
   registerCredentialsValitation,
-} from '../middlewares/validation/users';
-import { checkUserDoesNotExist, checkUserExist } from '../middlewares/auth/auth';
-import { handlerGuard } from '../middlewares/handlerGuard';
-import { jwtUserSign } from '../utils/jwt';
+} from "../middlewares/validation/users";
+import { checkUserDoesNotExist, checkUserExist } from "../middlewares/auth/users";
+import { handlerGuard } from "../middlewares/handlerGuard";
+import { jwtUserSign, jwtUserVerify } from "../utils/jwt";
+import { validateAuthToken } from "../middlewares/auth/auth";
 
 const router = Router();
 
-const users = getCollection('users');
+const users = getCollection("users");
 
-router.get('/:id', async (req, res) => {
-  res.send(await users.findOne({ _id: new ObjectId(req.params.id) }));
+router.get("/:id", async (req, res) => {
+  return res.send(await users.findOne({ _id: new ObjectId(req.params.id) }));
 });
 
 router.post(
-  '/register',
+  "/register",
   registerCredentialsValitation,
   checkUserDoesNotExist,
   handlerGuard(async (req, res) => {
@@ -26,13 +27,13 @@ router.post(
 
     let userId, user;
 
-    if (type === 'admin') {
+    if (type === "admin") {
       userId = await (
         await users.insertOne({
           email: email,
           password: password,
           name: name,
-          type: 'admin',
+          type: "admin",
         })
       ).insertedId.toHexString();
 
@@ -43,7 +44,7 @@ router.post(
           email: email,
           password: password,
           name: name,
-          type: 'admin',
+          type: "admin",
         })
       ).insertedId.toHexString();
 
@@ -55,13 +56,14 @@ router.post(
 );
 
 router.post(
-  '/login',
+  "/login",
   loginCredentialsValitation,
+  validateAuthToken,
   checkUserExist,
   handlerGuard(async (req, res) => {
-    const { AUTH_TOKEN } = req.headers;
+    const { user } = req;
 
-    return res.send({ secretKey: jwtUserSign(req.user!) });
+    res.send({ secretKey: jwtUserSign(req.user!) });
   })
 );
 
