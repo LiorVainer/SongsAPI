@@ -63,7 +63,7 @@ router.post(
   handlerGuard(async (req, res) => {
     const { user } = req;
 
-    res.send({ secretKey: jwtUserSign(req.user!) });
+    res.send({ secretKey: jwtUserSign(user!) });
   })
 );
 
