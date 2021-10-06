@@ -1,4 +1,4 @@
-import { RequestHandler } from 'express';
+import { RequestHandler } from "express";
 
 /** Validates Register Request Body includes email, password and name. otherwise handles error logic */
 export const registerCredentialsValitation: RequestHandler = (req, res, next) => {
@@ -15,7 +15,7 @@ export const registerCredentialsValitation: RequestHandler = (req, res, next) =>
     .send(`Invalid Credential Didn't get username, password and name in the request body`);
 };
 
-/** Validates Register Request Body includes email, password and name. otherwise handles error logic */
+/** Validates Register Request Body includes email and password. otherwise handles error logic */
 export const loginCredentialsValitation: RequestHandler = (req, res, next) => {
   if (req.body) {
     const { email, password } = req.body;

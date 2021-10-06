@@ -33,7 +33,7 @@ router.post(
           email: email,
           password: password,
           name: name,
-          type: "admin",
+          type: type,
         })
       ).insertedId.toHexString();
 
@@ -44,7 +44,7 @@ router.post(
           email: email,
           password: password,
           name: name,
-          type: "admin",
+          type: "default",
         })
       ).insertedId.toHexString();
 

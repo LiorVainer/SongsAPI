@@ -17,7 +17,7 @@
 
 # **Data Modules**&nbsp;
 
-- ## **Song**
+- ## **Songs**
   - **id:** string
   - **name:** string
   - **length:** number (seconds)
@@ -26,7 +26,7 @@
 
 &nbsp;
 
-- ## **Singer**
+- ## **Singers**
   - **id:** string
   - **name:** string
   - **birthday:** string
@@ -40,3 +40,82 @@
   - **name:** string
   - **email:** string
   - **password:** string
+
+&nbsp;
+
+# **API Options**
+
+## **Singers**
+
+- ### Get All Singers Data
+
+```javascript
+GET / singers;
+```
+
+- ### Get Specific Singer Data by Id
+
+```javascript
+GET  /singers/:id
+```
+
+&nbsp;
+
+## **Songs**
+
+- ### Get All Songs Data
+
+```javascript
+GET / songs;
+```
+
+- ### Get Specific Song Data by Id
+
+```javascript
+GET  /songs/:id
+```
+
+&nbsp;
+
+## **Users**
+
+- ### Get Specific User Data by Id
+
+```javascript
+GET  /users/:id
+```
+
+&nbsp;
+
+- ### Register a new user
+
+```javascript
+POST / users / register;
+```
+
+Request Body Example:
+
+```json
+{
+  "username": "John",
+  "email": "john@example.com",
+  "password": "P@33W0R4"
+}
+```
+
+&nbsp;
+
+- ### Login into a user
+
+```javascript
+POST / users / login;
+```
+
+Request Body Example:
+
+```json
+{
+  "email": "john@example.com",
+  "password": "P@33W0R4"
+}
+```
